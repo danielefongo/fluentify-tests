@@ -1,7 +1,7 @@
-package fluentify.code
+package fluentify.tests
 
-import fluentify.code.Status.DENIED
-import fluentify.code.Status.SUCCESSFUL
+import fluentify.tests.Status.DENIED
+import fluentify.tests.Status.SUCCESSFUL
 
 data class Authentication(val card: Card, val status: Status)
 data class Card(val number: String)

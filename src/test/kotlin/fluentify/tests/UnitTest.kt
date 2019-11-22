@@ -1,7 +1,7 @@
-package fluentify.code
+package fluentify.tests
 
-import fluentify.code.Status.DENIED
-import fluentify.code.Status.SUCCESSFUL
+import fluentify.tests.Status.DENIED
+import fluentify.tests.Status.SUCCESSFUL
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 

@@ -1,7 +1,6 @@
-package fluentify.code
+package fluentify.tests
 
 import io.restassured.RestAssured
-import io.restassured.http.ContentType
 import io.restassured.http.ContentType.JSON
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.Test

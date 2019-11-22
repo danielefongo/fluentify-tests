@@ -1,4 +1,4 @@
-package fluentify.code
+package fluentify.tests
 
 import com.google.gson.GsonBuilder
 
