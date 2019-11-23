@@ -39,6 +39,9 @@ dependencies {
 
     // Use restassured
     testCompile("io.rest-assured:rest-assured:3.0.0")
+
+    // Use wiremock
+    testCompile("com.github.tomakehurst:wiremock-jre8:2.23.2")
 }
 
 application {
