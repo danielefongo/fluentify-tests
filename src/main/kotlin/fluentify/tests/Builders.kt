@@ -48,8 +48,8 @@ fun talk(lambda: TalkBuilder.() -> Unit): Talk {
 
 fun main() {
     val talk = talk {
-        this.speaker = Person("Daniele", "Fongo")
-        this.spectators = spectators {
+        speaker = Person("Daniele", "Fongo")
+        spectators = spectators {
             addPerson(Person("Mario", "Rossi"))
             addPerson(Person("Giacomo", "Bianchi"))
         }
