@@ -55,9 +55,11 @@ class AcceptanceTest {
             .then()
             .assertThat()
 
-        validatableResponse.isValid()
-        validatableResponse.hasIdAndStatus(123, "CHALLENGE")
-        validatableResponse.hasChallengeInfo("SMS", 3)
+        with(validatableResponse) {
+            isValid()
+            hasIdAndStatus(123, "CHALLENGE")
+            hasChallengeInfo("SMS", 3)
+        }
     }
 
     private fun ValidatableResponse.isValid() {
