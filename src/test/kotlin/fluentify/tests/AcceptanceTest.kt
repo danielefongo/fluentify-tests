@@ -52,16 +52,11 @@ class AcceptanceTest {
         val response = RestAssured
             .post("$serverUrl/authenticate/98765")
 
-        val validatableResponse = response
-            .then()
-            .assertThat()
-
         response expects {
             isValid()
             hasIdAndStatus(123, "CHALLENGE")
             hasChallengeInfo("SMS", 3)
         }
-        //assertionBlock(validatableResponse)
     }
 
     private infix fun Response.expects(
