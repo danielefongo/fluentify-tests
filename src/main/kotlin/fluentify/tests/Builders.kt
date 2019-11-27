@@ -59,7 +59,6 @@ fun main() {
     val talk = talk {
         speaker = Person("Daniele", "Fongo")
         spectators = spectators {
-            spectators = spectators {  }
             + Person("Mario", "Rossi")
             + Person("Giacomo", "Bianchi")
         }
