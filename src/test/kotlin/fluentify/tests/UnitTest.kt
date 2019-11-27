@@ -4,6 +4,7 @@ import fluentify.tests.Status.DENIED
 import fluentify.tests.Status.SUCCESSFUL
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
+import kotlin.test.assertEquals
 
 class UnitTest {
 
@@ -41,5 +42,5 @@ private infix fun Any.mustBe(other: Any) { //Static.mustBe(this: Any, other: Any
     -> this is an implicit receiver
     -> other is an explicit receiver
      */
-    assertThat(this).isEqualTo(other)
+    assertEquals(other, this)
 }
