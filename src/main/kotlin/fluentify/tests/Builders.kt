@@ -6,6 +6,10 @@ data class Talk(val speaker: Person, val spectators: Spectators)
 data class Spectators(val people: List<Person>)
 data class Person(val name: String, val surname: String)
 
+@DslMarker
+annotation class MyDsl
+
+@MyDsl
 class TalkBuilder {
     lateinit var speaker: Person
     lateinit var spectators: Spectators
@@ -23,6 +27,7 @@ class TalkBuilder {
     fun build() = Talk(speaker, spectators)
 }
 
+@MyDsl
 class SpectatorsBuilder {
     private var people: MutableList<Person> = mutableListOf()
 
