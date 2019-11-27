@@ -23,7 +23,7 @@ class UnitTest {
 
         val authentication = authenticateUseCase.authenticate(validCard)
 
-        assertThat(authentication.status).isEqualTo(SUCCESSFUL)
+        authentication.status mustBe SUCCESSFUL
     }
 
     @Test
@@ -32,11 +32,11 @@ class UnitTest {
 
         val authentication = authenticateUseCase.authenticate(invalidCard)
 
-        assertThat(authentication.status).isEqualTo(DENIED)
+        authentication.status mustBe DENIED
     }
 }
 
-private infix fun Card.mustBe(other: Card) { //Static.mustBe(this: Card, other: Card)
+private infix fun Any.mustBe(other: Any) { //Static.mustBe(this: Any, other: Any)
     /*
     -> this is an implicit receiver
     -> other is an explicit receiver
