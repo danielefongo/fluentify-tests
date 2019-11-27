@@ -47,10 +47,14 @@ class AcceptanceTest {
         }
         """
 
-        RestAssured
+        val response = RestAssured
             .post("$serverUrl/authenticate/98765")
+
+        val validatableResponse = response
             .then()
             .assertThat()
+
+        validatableResponse
             .statusCode(200)
             .contentType(JSON)
             .body("id", equalTo(123))
