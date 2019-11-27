@@ -14,7 +14,7 @@ class UnitTest {
         val aCard = Card("any")
         val authentication = authenticateUseCase.authenticate(aCard)
 
-        authentication.card.mustBe(aCard)
+        authentication.card mustBe aCard
     }
 
     @Test
@@ -36,7 +36,7 @@ class UnitTest {
     }
 }
 
-private fun Card.mustBe(other: Card) { //Static.mustBe(this: Card, other: Card)
+private infix fun Card.mustBe(other: Card) { //Static.mustBe(this: Card, other: Card)
     /*
     -> this is an implicit receiver
     -> other is an explicit receiver
