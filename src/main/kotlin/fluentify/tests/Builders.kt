@@ -67,6 +67,19 @@ fun main() {
     println(talk.pretty)
 }
 
+
+fun `old builders usage`() {
+    val speaker = Person("Daniele", "Fongo")
+    val spectators = SpectatorsBuilder()
+        .addPerson(Person("Mario", "Rossi"))
+        .addPerson(Person("Giacomo", "Bianchi"))
+        .build()
+    val talk = TalkBuilder()
+        .withSpeaker(speaker)
+        .withSpectators(spectators)
+        .build()
+}
+
 val Talk.pretty: String
     get() = GsonBuilder()
             .setPrettyPrinting()
