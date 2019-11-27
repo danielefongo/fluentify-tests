@@ -34,12 +34,18 @@ class SpectatorsBuilder {
     fun build() = Spectators(people)
 }
 
+fun spectators(lambda: SpectatorsBuilder.() -> Unit): Spectators {
+    val builder = SpectatorsBuilder()
+    builder.lambda()
+    return builder.build()
+}
+
 fun main() {
     val speaker = Person("Daniele", "Fongo")
-    val spectators = SpectatorsBuilder()
-            .addPerson(Person("Mario", "Rossi"))
-            .addPerson(Person("Giacomo", "Bianchi"))
-            .build()
+    val spectators = spectators {
+        addPerson(Person("Mario", "Rossi"))
+        addPerson(Person("Giacomo", "Bianchi"))
+    }
     val talk = TalkBuilder()
             .withSpeaker(speaker)
             .withSpectators(spectators)
