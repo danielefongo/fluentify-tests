@@ -61,7 +61,8 @@ class AcceptanceTest {
             hasChallengeInfo("SMS", 3)
         }
 
-        with(validatableResponse, assertionBlock)
+        validatableResponse.assertionBlock()
+        //assertionBlock(validatableResponse)
     }
 
     private fun ValidatableResponse.isValid() {
