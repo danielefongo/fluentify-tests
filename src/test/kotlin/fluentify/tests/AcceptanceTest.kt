@@ -58,9 +58,16 @@ class AcceptanceTest {
         validatableResponse
             .statusCode(200)
             .contentType(JSON)
-        validatableResponse.body("id", equalTo(123))
-            .body("status", equalTo("CHALLENGE"))
+        validatableResponse.hasIdAndStatus(123, "CHALLENGE")
         validatableResponse.hasChallengeInfo("SMS", 3)
+    }
+
+    private fun ValidatableResponse.hasIdAndStatus(
+        id: Int,
+        status: String
+    ) {
+        body("id", equalTo(id))
+            .body("status", equalTo(status))
     }
 
     private fun ValidatableResponse.hasChallengeInfo(
