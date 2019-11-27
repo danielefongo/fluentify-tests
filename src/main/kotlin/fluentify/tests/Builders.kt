@@ -31,6 +31,10 @@ class SpectatorsBuilder {
         return this
     }
 
+    operator fun Person.unaryPlus() {
+        addPerson(this)
+    }
+
     fun build() = Spectators(people)
 }
 
@@ -50,8 +54,8 @@ fun main() {
     val talk = talk {
         speaker = Person("Daniele", "Fongo")
         spectators = spectators {
-            addPerson(Person("Mario", "Rossi"))
-            addPerson(Person("Giacomo", "Bianchi"))
+            + Person("Mario", "Rossi")
+            + Person("Giacomo", "Bianchi")
         }
     }
 
