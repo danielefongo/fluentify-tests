@@ -49,8 +49,7 @@ class AcceptanceTest {
         }
         """
 
-        val response = RestAssured
-            .post("$serverUrl/authenticate/98765")
+        val response = authenticate(98765)
 
         response should {
             beValid()
@@ -58,6 +57,9 @@ class AcceptanceTest {
             haveChallengeInfo("SMS", 3)
         }
     }
+
+    private fun authenticate(card: Int) = RestAssured
+        .post("$serverUrl/authenticate/$card")
 
     private infix fun Response.should(
         assertionBlock: ValidatableResponse.() -> Unit
