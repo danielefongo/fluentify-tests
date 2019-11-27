@@ -55,11 +55,14 @@ class AcceptanceTest {
             .then()
             .assertThat()
 
-        validatableResponse
-            .statusCode(200)
-            .contentType(JSON)
+        validatableResponse.isValid()
         validatableResponse.hasIdAndStatus(123, "CHALLENGE")
         validatableResponse.hasChallengeInfo("SMS", 3)
+    }
+
+    private fun ValidatableResponse.isValid() {
+        statusCode(200)
+            .contentType(JSON)
     }
 
     private fun ValidatableResponse.hasIdAndStatus(
