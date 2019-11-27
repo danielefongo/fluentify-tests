@@ -6,6 +6,7 @@ import com.github.tomakehurst.wiremock.core.WireMockConfiguration.options
 import com.github.tomakehurst.wiremock.junit.WireMockRule
 import io.restassured.RestAssured
 import io.restassured.http.ContentType.JSON
+import io.restassured.response.ValidatableResponse
 import org.apache.http.entity.ContentType.APPLICATION_JSON
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.ClassRule
@@ -59,8 +60,16 @@ class AcceptanceTest {
             .contentType(JSON)
         validatableResponse.body("id", equalTo(123))
             .body("status", equalTo("CHALLENGE"))
-        validatableResponse.body("challengeInfo.type", equalTo("SMS"))
-            .body("challengeInfo.availableAttempts", equalTo(3))
+        hasChallengeInfo(validatableResponse, "SMS", 3)
+    }
+
+    private fun hasChallengeInfo(
+        validatableResponse: ValidatableResponse,
+        type: String,
+        availableAttempts: Int
+    ) {
+        validatableResponse.body("challengeInfo.type", equalTo(type))
+            .body("challengeInfo.availableAttempts", equalTo(availableAttempts))
     }
 
     private fun mockPostOn(relativeUrl: String) = MockPost(fakeServer, relativeUrl)
