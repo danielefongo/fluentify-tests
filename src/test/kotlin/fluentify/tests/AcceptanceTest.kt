@@ -61,8 +61,14 @@ class AcceptanceTest {
             hasChallengeInfo("SMS", 3)
         }
 
-        validatableResponse.assertionBlock()
+        validatableResponse.expects(assertionBlock)
         //assertionBlock(validatableResponse)
+    }
+
+    private fun ValidatableResponse.expects(
+        assertionBlock: ValidatableResponse.() -> Unit
+    ) {
+        assertionBlock()
     }
 
     private fun ValidatableResponse.isValid() {
