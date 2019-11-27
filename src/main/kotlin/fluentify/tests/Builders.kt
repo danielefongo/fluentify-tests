@@ -32,7 +32,7 @@ class SpectatorsBuilder {
     }
 
     operator fun Person.unaryPlus() {
-        addPerson(this)
+        this@SpectatorsBuilder.addPerson(this)
     }
 
     fun build() = Spectators(people)
