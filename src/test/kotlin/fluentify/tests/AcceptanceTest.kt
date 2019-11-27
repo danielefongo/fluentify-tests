@@ -55,15 +55,15 @@ class AcceptanceTest {
             .then()
             .assertThat()
 
-        validatableResponse.expects({
+        validatableResponse expects {
             isValid()
             hasIdAndStatus(123, "CHALLENGE")
             hasChallengeInfo("SMS", 3)
-        })
+        }
         //assertionBlock(validatableResponse)
     }
 
-    private fun ValidatableResponse.expects(
+    private infix fun ValidatableResponse.expects(
         assertionBlock: ValidatableResponse.() -> Unit
     ) {
         assertionBlock()
