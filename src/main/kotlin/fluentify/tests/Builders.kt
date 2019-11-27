@@ -40,16 +40,22 @@ fun spectators(lambda: SpectatorsBuilder.() -> Unit): Spectators {
     return builder.build()
 }
 
+fun talk(lambda: TalkBuilder.() -> Unit): Talk {
+    val builder = TalkBuilder()
+    builder.lambda()
+    return builder.build()
+}
+
 fun main() {
     val speaker = Person("Daniele", "Fongo")
     val spectators = spectators {
         addPerson(Person("Mario", "Rossi"))
         addPerson(Person("Giacomo", "Bianchi"))
     }
-    val talk = TalkBuilder()
-            .withSpeaker(speaker)
-            .withSpectators(spectators)
-            .build()
+    val talk = talk {
+        withSpeaker(speaker)
+        withSpectators(spectators)
+    }
 
     println(talk.pretty)
 }
