@@ -7,8 +7,8 @@ data class Spectators(val people: List<Person>)
 data class Person(val name: String, val surname: String)
 
 class TalkBuilder {
-    private lateinit var speaker: Person
-    private lateinit var spectators: Spectators
+    lateinit var speaker: Person
+    lateinit var spectators: Spectators
 
     fun withSpeaker(speaker: Person): TalkBuilder {
         this.speaker = speaker
@@ -53,8 +53,8 @@ fun main() {
         addPerson(Person("Giacomo", "Bianchi"))
     }
     val talk = talk {
-        withSpeaker(speaker)
-        withSpectators(spectators)
+        this.speaker = speaker
+        this.spectators = spectators
     }
 
     println(talk.pretty)
