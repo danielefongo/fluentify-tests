@@ -55,13 +55,11 @@ class AcceptanceTest {
             .then()
             .assertThat()
 
-        val assertionBlock: (ValidatableResponse).() -> Unit = {
+        validatableResponse.expects({
             isValid()
             hasIdAndStatus(123, "CHALLENGE")
             hasChallengeInfo("SMS", 3)
-        }
-
-        validatableResponse.expects(assertionBlock)
+        })
         //assertionBlock(validatableResponse)
     }
 
