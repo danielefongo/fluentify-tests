@@ -55,11 +55,13 @@ class AcceptanceTest {
             .then()
             .assertThat()
 
-        with(validatableResponse) {
+        val assertionBlock: (ValidatableResponse).() -> Unit = {
             isValid()
             hasIdAndStatus(123, "CHALLENGE")
             hasChallengeInfo("SMS", 3)
         }
+
+        with(validatableResponse, assertionBlock)
     }
 
     private fun ValidatableResponse.isValid() {
