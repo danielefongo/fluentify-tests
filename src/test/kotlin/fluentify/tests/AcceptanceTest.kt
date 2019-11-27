@@ -52,26 +52,26 @@ class AcceptanceTest {
         val response = RestAssured
             .post("$serverUrl/authenticate/98765")
 
-        response expects {
-            isValid()
-            hasIdAndStatus(123, "CHALLENGE")
-            hasChallengeInfo("SMS", 3)
+        response should {
+            beValid()
+            haveIdAndStatus(123, "CHALLENGE")
+            haveChallengeInfo("SMS", 3)
         }
     }
 
-    private infix fun Response.expects(
+    private infix fun Response.should(
         assertionBlock: ValidatableResponse.() -> Unit
     ) {
         val validatableResponse = then().assertThat()
         validatableResponse.assertionBlock()
     }
 
-    private fun ValidatableResponse.isValid() {
+    private fun ValidatableResponse.beValid() {
         statusCode(200)
             .contentType(JSON)
     }
 
-    private fun ValidatableResponse.hasIdAndStatus(
+    private fun ValidatableResponse.haveIdAndStatus(
         id: Int,
         status: String
     ) {
@@ -79,7 +79,7 @@ class AcceptanceTest {
             .body("status", equalTo(status))
     }
 
-    private fun ValidatableResponse.hasChallengeInfo(
+    private fun ValidatableResponse.haveChallengeInfo(
         type: String,
         availableAttempts: Int
     ) {
