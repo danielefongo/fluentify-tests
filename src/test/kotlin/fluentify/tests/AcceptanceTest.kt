@@ -57,9 +57,9 @@ class AcceptanceTest {
         validatableResponse
             .statusCode(200)
             .contentType(JSON)
-            .body("id", equalTo(123))
+        validatableResponse.body("id", equalTo(123))
             .body("status", equalTo("CHALLENGE"))
-            .body("challengeInfo.type", equalTo("SMS"))
+        validatableResponse.body("challengeInfo.type", equalTo("SMS"))
             .body("challengeInfo.availableAttempts", equalTo(3))
     }
 
