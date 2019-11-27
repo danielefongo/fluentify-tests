@@ -6,6 +6,7 @@ import com.github.tomakehurst.wiremock.core.WireMockConfiguration.options
 import com.github.tomakehurst.wiremock.junit.WireMockRule
 import io.restassured.RestAssured
 import io.restassured.http.ContentType.JSON
+import io.restassured.response.Response
 import io.restassured.response.ValidatableResponse
 import org.apache.http.entity.ContentType.APPLICATION_JSON
 import org.hamcrest.CoreMatchers.equalTo
@@ -55,7 +56,7 @@ class AcceptanceTest {
             .then()
             .assertThat()
 
-        validatableResponse expects {
+        response expects {
             isValid()
             hasIdAndStatus(123, "CHALLENGE")
             hasChallengeInfo("SMS", 3)
@@ -63,10 +64,11 @@ class AcceptanceTest {
         //assertionBlock(validatableResponse)
     }
 
-    private infix fun ValidatableResponse.expects(
+    private infix fun Response.expects(
         assertionBlock: ValidatableResponse.() -> Unit
     ) {
-        assertionBlock()
+        val validatableResponse = then().assertThat()
+        validatableResponse.assertionBlock()
     }
 
     private fun ValidatableResponse.isValid() {
