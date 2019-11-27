@@ -49,9 +49,7 @@ class AcceptanceTest {
         }
         """
 
-        val response = authenticate(98765)
-
-        response should {
+        authenticate(98765) should {
             beValid()
             haveIdAndStatus(123, "CHALLENGE")
             haveChallengeInfo("SMS", 3)
