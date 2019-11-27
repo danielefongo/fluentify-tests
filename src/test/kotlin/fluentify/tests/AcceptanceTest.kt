@@ -60,15 +60,14 @@ class AcceptanceTest {
             .contentType(JSON)
         validatableResponse.body("id", equalTo(123))
             .body("status", equalTo("CHALLENGE"))
-        hasChallengeInfo(validatableResponse, "SMS", 3)
+        validatableResponse.hasChallengeInfo("SMS", 3)
     }
 
-    private fun hasChallengeInfo(
-        validatableResponse: ValidatableResponse,
+    private fun ValidatableResponse.hasChallengeInfo(
         type: String,
         availableAttempts: Int
     ) {
-        validatableResponse.body("challengeInfo.type", equalTo(type))
+        body("challengeInfo.type", equalTo(type))
             .body("challengeInfo.availableAttempts", equalTo(availableAttempts))
     }
 
