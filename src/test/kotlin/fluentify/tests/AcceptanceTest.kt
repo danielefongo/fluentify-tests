@@ -33,6 +33,11 @@ class AcceptanceTest {
             .contentType(JSON)
             .body("id", equalTo(123))
             .body("status", equalTo("SUCCESSFUL"))
+
+        authenticate(12345) should {
+            beValid()
+            haveIdAndStatus(123, "SUCCESSFUL")
+        }
     }
 
     @Test
